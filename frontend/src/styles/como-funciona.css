@@ -1,0 +1,117 @@
+.como-funciona-container {
+  background: var(--background);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.funciona-hero {
+  margin: auto;
+  max-width: 900px;
+  padding: 110px 24px 72px;
+  text-align: center;
+}
+
+.funciona-hero h1 {
+  color: var(--text);
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  line-height: 1.02;
+  margin: 0 0 24px;
+}
+
+.funciona-hero p {
+  color: var(--text-light);
+  font-size: 1.08rem;
+  line-height: 1.8;
+  margin: auto;
+  max-width: 720px;
+}
+
+.pasos-container {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: auto;
+  max-width: 1180px;
+  padding: 24px 24px 96px;
+}
+
+.paso-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.paso-card:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-6px);
+}
+
+.paso-numero {
+  align-items: center;
+  background: var(--accent);
+  border-radius: 14px;
+  color: var(--surface);
+  display: flex;
+  font-weight: 900;
+  height: 54px;
+  justify-content: center;
+  margin-bottom: 22px;
+  width: 54px;
+}
+
+.paso-card h3 {
+  color: var(--text);
+  font-size: 1.25rem;
+  margin: 0 0 12px;
+}
+
+.paso-card p {
+  color: var(--text-light);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.modulos-section,
+.beneficios {
+  padding: 96px 24px;
+}
+
+.modulos-section {
+  background: var(--surface-2);
+  border-block: 1px solid var(--border);
+}
+
+.modulos-section h2,
+.beneficios h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin: 0 auto 46px;
+  max-width: 780px;
+  text-align: center;
+}
+
+.beneficios-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: auto;
+  max-width: 1040px;
+}
+
+.beneficio {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--text);
+  font-weight: 800;
+  padding: 22px;
+  text-align: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.beneficio:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-4px);
+}

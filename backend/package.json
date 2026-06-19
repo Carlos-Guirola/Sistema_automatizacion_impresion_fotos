@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch api.js",
+    "start": "node api.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "image-size": "^2.0.2",
+    "multer": "^2.2.0",
+    "mysql2": "^3.22.5",
+    "pdf-lib": "^1.17.1",
+    "pdfkit": "^0.19.1",
+    "sharp": "^0.35.2"
+  }
+}
