@@ -37,33 +37,9 @@ export const paperSizes = {
     height: 8.27 * POINTS_PER_INCH,
   },
 
-  "4x6-vertical": {
-    id: "4x6-vertical",
-    label: "4 x 6 pulgadas vertical",
-    width: 4 * POINTS_PER_INCH,
-    height: 6 * POINTS_PER_INCH,
-    forcedGrid: { columns: 1, rows: 2 },
-  },
-
   "4x6-horizontal": {
     id: "4x6-horizontal",
-    label: "4 x 6 pulgadas horizontal",
-    width: 6 * POINTS_PER_INCH,
-    height: 4 * POINTS_PER_INCH,
-    forcedGrid: { columns: 2, rows: 1 },
-  },
-
-  "10x15-vertical": {
-    id: "10x15-vertical",
-    label: "10 x 15 cm vertical",
-    width: 10 * CM_TO_POINTS,
-    height: 15 * CM_TO_POINTS,
-    forcedGrid: { columns: 1, rows: 2 },
-  },
-
-  "10x15-horizontal": {
-    id: "10x15-horizontal",
-    label: "10 x 15 cm horizontal",
+    label: "4 x 6 horizontal",
     width: 15 * CM_TO_POINTS,
     height: 10 * CM_TO_POINTS,
     forcedGrid: { columns: 2, rows: 1 },
@@ -73,11 +49,10 @@ export const paperSizes = {
 const paperAliases = {
   carta: "carta-vertical",
   a4: "a4-vertical",
-  "4x6": "10x15-horizontal",
-  "10x15": "10x15-horizontal",
+  "4x6": "4x6-horizontal",
 };
 
-export function getPaperSize(paperId = "10x15-horizontal") {
+export function getPaperSize(paperId = "4x6-horizontal") {
   const normalizedPaperId = String(paperId).toLowerCase();
 
   return (
@@ -139,7 +114,7 @@ function buildFrame({ width, height }) {
   };
 }
 
-export function buildPolaroidLayout(paperId = "10x15-horizontal") {
+export function buildPolaroidLayout(paperId = "4x6-horizontal") {
   const paper = getPaperSize(paperId);
 
   if (!paper) {
@@ -206,7 +181,7 @@ export function buildPolaroidLayout(paperId = "10x15-horizontal") {
   };
 }
 
-export function buildFullPhotoLayout(paperId = "10x15-horizontal") {
+export function buildFullPhotoLayout(paperId = "4x6-horizontal") {
   const paper = getPaperSize(paperId);
 
   if (!paper) {
