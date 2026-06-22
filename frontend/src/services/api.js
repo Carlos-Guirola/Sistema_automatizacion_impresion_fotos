@@ -65,6 +65,11 @@ export const api = {
         method: "POST",
         body: formData,
       }),
+    word: (formData) =>
+      request("/herramientas/word", {
+        method: "POST",
+        body: formData,
+      }),
     pdf: (formData) =>
       request("/herramientas/pdf", {
         method: "POST",

@@ -31,6 +31,7 @@ function Contacto() {
 
     try {
       const response = await api.registros.create(form);
+      localStorage.setItem("toolsprint-user", JSON.stringify(response.data));
       setSuccessMessage(response.message);
       setForm(emptyForm);
     } catch (error) {
@@ -42,7 +43,7 @@ function Contacto() {
 
   function handleAcceptSuccess() {
     setSuccessMessage("");
-    navigate("/");
+    navigate("/dashboard");
   }
 
   return (
@@ -50,25 +51,25 @@ function Contacto() {
       <section className="contacto-hero">
         <span className="contacto-badge">Registro</span>
         <h1>Registro</h1>
-        <p>Completa tus datos para solicitar acceso a ToolsPrint.</p>
+        <p>Completa tus datos y empieza tu prueba gratuita de 15 dias.</p>
       </section>
 
       <section className="contacto-content">
         <div className="contacto-info">
-          <h2>Acceso pendiente</h2>
+          <h2>Prueba gratuita</h2>
           <p>
-            Al registrarte, tu usuario queda pendiente. El administrador te
-            contactara cuando este activo.
+            Al registrarte, tu usuario se activa de inmediato. Cuando pasen
+            los 15 dias, deberas contactar al administrador para continuar.
           </p>
 
           <div className="info-box">
-            <strong>Estado inicial</strong>
-            <span>Pendiente</span>
+            <strong>Inicio de sesion</strong>
+            <span>Entraras automaticamente al terminar el registro</span>
           </div>
 
           <div className="info-box">
-            <strong>Inicio de sesion</strong>
-            <span>Usaras tu correo cuando el usuario este activo</span>
+            <strong>Prueba gratuita</strong>
+            <span>15 dias desde la fecha de registro</span>
           </div>
         </div>
 

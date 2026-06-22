@@ -19,7 +19,7 @@ function Footer() {
           </div>
 
           <p>
-            Plataforma para generar PDFs de impresion fotografica, controlar
+            Plataforma para generar PDF y Word de impresion fotografica, controlar
             materiales y gestionar pedidos desde un solo lugar.
           </p>
         </div>

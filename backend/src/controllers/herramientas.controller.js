@@ -3,6 +3,7 @@ import {
   buildPolaroidLayout,
   listPaperSizes,
 } from '../services/paper.service.js';
+import { generatePolaroidDocx } from '../services/docx.service.js';
 import { generatePolaroidPdf } from '../services/pdf.service.js';
 import { AppError } from '../utils/AppError.js';
 
@@ -12,7 +13,7 @@ function getPaperFromRequest(req) {
     req.body?.papel ||
     req.query.paperSize ||
     req.query.papel ||
-    '10x15-horizontal'
+    '4x6-horizontal'
   );
 }
 
@@ -26,6 +27,7 @@ function getCustomizationFromRequest(req) {
     captionText: req.body?.captionText || req.query.captionText || '',
     captionIcon: req.body?.captionIcon || req.query.captionIcon || 'ninguno',
     textColor: req.body?.textColor || req.query.textColor || 'negro',
+    fontFamily: req.body?.fontFamily || req.query.fontFamily || 'helvetica',
   };
 }
 
@@ -67,6 +69,32 @@ export async function generarVistaPrevia(req, res) {
   res.setHeader('Content-Disposition', 'inline; filename="vista-previa-toolsprint.pdf"');
   res.setHeader('X-ToolsPrint-Pages', String(pages));
   res.setHeader('X-ToolsPrint-Photos-Per-Page', String(layout.grid.photosPerPage));
+  res.send(buffer);
+}
+
+export async function generarWord(req, res) {
+  const mode = getModeFromRequest(req);
+
+  const { buffer, layout, pages } = await generatePolaroidDocx({
+    files: req.files,
+    paperId: getPaperFromRequest(req),
+    mode,
+    customization: getCustomizationFromRequest(req),
+  });
+
+  res.setHeader(
+    'Content-Type',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  );
+
+  res.setHeader(
+    'Content-Disposition',
+    `attachment; filename="toolsprint-${mode === 'foto-completa' ? 'fotos' : 'polaroid'}.docx"`
+  );
+
+  res.setHeader('X-ToolsPrint-Pages', String(pages));
+  res.setHeader('X-ToolsPrint-Photos-Per-Page', String(layout.grid.photosPerPage));
+
   res.send(buffer);
 }
 

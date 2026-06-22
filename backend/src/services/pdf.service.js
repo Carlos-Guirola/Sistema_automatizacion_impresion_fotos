@@ -16,12 +16,30 @@ const colorPalette = {
   rosado: '#f9a8d4',
   beige: '#f2e3c6',
   rojo: '#e11d48',
+  lavanda: '#e9d5ff',
+  cielo: '#bfdbfe',
+  menta: '#bbf7d0',
+  durazno: '#fed7aa',
+  amarillo: '#fef3c7',
+  lila: '#f5d0fe',
+  azul: '#1d4ed8',
+  verde: '#15803d',
+  morado: '#7e22ce',
+  naranja: '#c2410c',
+  fucsia: '#be185d',
 };
 
 const iconCharacters = {
   corazon: '\u2665',
   estrella: '\u2605',
   brillo: '\u2726',
+  flor: '\u273f',
+};
+
+const fontMap = {
+  helvetica: StandardFonts.HelveticaBold,
+  clasica: StandardFonts.TimesRomanBold,
+  moderna: StandardFonts.CourierBold,
 };
 
 function toPixels(points) {
@@ -113,29 +131,17 @@ function drawPolaroidCaption(page, slot, pageHeight, customization, font, iconFo
   }
 }
 
-function drawPolaroidDividers(page, paper, layout) {
-  const dividerColor = rgb(0.9, 0.9, 0.88);
-  const { columns, rows } = layout.grid;
+function drawPolaroidGuides(page, slots, pageHeight) {
+  const guideColor = rgb(0.78, 0.78, 0.74);
 
-  for (let column = 1; column < columns; column += 1) {
-    const x = (paper.width / columns) * column;
-
-    page.drawLine({
-      start: { x, y: 0 },
-      end: { x, y: paper.height },
-      thickness: 0.7,
-      color: dividerColor,
-    });
-  }
-
-  for (let row = 1; row < rows; row += 1) {
-    const y = (paper.height / rows) * row;
-
-    page.drawLine({
-      start: { x: 0, y },
-      end: { x: paper.width, y },
-      thickness: 0.7,
-      color: dividerColor,
+  for (const slot of slots) {
+    page.drawRectangle({
+      x: slot.x,
+      y: yFromTop(pageHeight, slot.y, slot.height),
+      width: slot.width,
+      height: slot.height,
+      borderColor: guideColor,
+      borderWidth: 0.5,
     });
   }
 }
@@ -202,7 +208,8 @@ export async function generatePolaroidPdf({
   }
 
   const pdfDoc = await PDFDocument.create();
-  const captionFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+  const fontKey = String(customization.fontFamily || 'helvetica').toLowerCase();
+  const captionFont = await pdfDoc.embedFont(fontMap[fontKey] || StandardFonts.HelveticaBold);
   const iconFont = await pdfDoc.embedFont(StandardFonts.ZapfDingbats);
   const { slots } = layout;
 
@@ -246,7 +253,7 @@ export async function generatePolaroidPdf({
       );
     }
 
-    drawPolaroidDividers(page, paper, layout);
+    drawPolaroidGuides(page, slots.slice(0, pageFiles.length), paper.height);
   }
 
   const pdfBytes = await pdfDoc.save({ useObjectStreams: false });

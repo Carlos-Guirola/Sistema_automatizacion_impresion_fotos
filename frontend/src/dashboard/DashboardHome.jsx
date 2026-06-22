@@ -72,8 +72,8 @@ function DashboardHome() {
           <h2>{isAdmin ? "Panel administrativo" : "Generador Polaroid"}</h2>
           <p>
             {isAdmin
-              ? "Puedes gestionar empresas, usuarios y generar PDFs tipo Polaroid."
-              : "Tu acceso esta enfocado en generar PDFs tipo Polaroid listos para imprimir."}
+              ? "Puedes gestionar empresas, usuarios y generar PDF o Word tipo Polaroid."
+              : "Tu acceso esta enfocado en generar PDF o Word tipo Polaroid listos para imprimir."}
           </p>
           {!isAdmin && (
             <Link className="panel-link" to="/dashboard/generador">

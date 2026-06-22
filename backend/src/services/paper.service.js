@@ -4,8 +4,8 @@ const CM_TO_POINTS = POINTS_PER_INCH / 2.54;
 export const DPI = 300;
 
 const BASE_HORIZONTAL_POLAROID = {
-  width: 3 * POINTS_PER_INCH,
-  height: 4 * POINTS_PER_INCH,
+  width: 7.62 * CM_TO_POINTS,
+  height: 10.16 * CM_TO_POINTS,
 };
 
 export const paperSizes = {
@@ -40,9 +40,16 @@ export const paperSizes = {
   "4x6-horizontal": {
     id: "4x6-horizontal",
     label: "4 x 6 horizontal",
-    width: 15 * CM_TO_POINTS,
-    height: 10 * CM_TO_POINTS,
+    width: 15.24 * CM_TO_POINTS,
+    height: 10.16 * CM_TO_POINTS,
     forcedGrid: { columns: 2, rows: 1 },
+  },
+
+  "4x6-vertical": {
+    id: "4x6-vertical",
+    label: "4 x 6 vertical",
+    width: 10.16 * CM_TO_POINTS,
+    height: 15.24 * CM_TO_POINTS,
   },
 };
 
@@ -121,6 +128,7 @@ export function buildPolaroidLayout(paperId = "4x6-horizontal") {
     return null;
   }
 
+  const hasForcedGrid = Boolean(paper.forcedGrid);
   const columns =
     paper.forcedGrid?.columns ||
     Math.max(1, Math.floor(paper.width / BASE_HORIZONTAL_POLAROID.width));
@@ -129,8 +137,8 @@ export function buildPolaroidLayout(paperId = "4x6-horizontal") {
     paper.forcedGrid?.rows ||
     Math.max(1, Math.floor(paper.height / BASE_HORIZONTAL_POLAROID.height));
 
-  const slotWidth = paper.width / columns;
-  const slotHeight = paper.height / rows;
+  const slotWidth = hasForcedGrid ? paper.width / columns : BASE_HORIZONTAL_POLAROID.width;
+  const slotHeight = hasForcedGrid ? paper.height / rows : BASE_HORIZONTAL_POLAROID.height;
 
   const slots = [];
 

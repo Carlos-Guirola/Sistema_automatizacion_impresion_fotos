@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import "../styles/home.css";
 
-const heroFeatures = ["Fotos Polaroid", "PDF automatico", "Proceso masivo"];
+const heroFeatures = ["Fotos Polaroid", "PDF o Word", "Proceso masivo"];
 
 const features = [
   {
@@ -22,7 +22,7 @@ const features = [
   },
   {
     icon: FileText,
-    title: "PDF listo para imprimir",
+    title: "PDF o Word listo",
     text: "Genera documentos ordenados, con margenes y tamanos pensados para tu flujo.",
   },
   {
@@ -50,8 +50,8 @@ const comparison = [
     items: [
       "Subes tus fotos",
       "Escoges el papel",
-      "Ves la vista previa",
-      "Descargas el PDF listo",
+      "Generas el archivo",
+      "Descargas el archivo listo",
     ],
     time: "Listo en segundos",
   },
@@ -73,7 +73,7 @@ function Home() {
             Automatiza tu impresion fotografica
           </div>
 
-          <h1>Convierte fotos en PDFs listos para imprimir</h1>
+          <h1>Convierte fotos en archivos listos para imprimir</h1>
 
           <p>
             Selecciona tus imagenes, elige el formato y deja que ToolsPrint
@@ -155,7 +155,8 @@ function Home() {
       <section className="modules">
         <div className="section-title">
           <span>Gestion</span>
-          <h2>Modulos para ordenar el negocio</h2>
+          <h2>Proximamente incluiremos</h2>
+          <p>Estamos preparando herramientas para ordenar mejor tu operacion.</p>
         </div>
 
         <div className="cards-grid">
@@ -170,7 +171,7 @@ function Home() {
 
       <section className="cta">
         <h2>Empieza a imprimir con menos friccion</h2>
-        <p>Reduce tiempos, organiza pedidos y prepara tus PDFs en segundos.</p>
+        <p>Reduce tiempos, organiza pedidos y prepara tus documentos en segundos.</p>
         <Link to="/login" className="btn-primary">
           Iniciar sesion
         </Link>

@@ -402,6 +402,52 @@
   text-align: center;
 }
 
+.success-modal-backdrop {
+  align-items: center;
+  background: rgba(17, 17, 17, 0.48);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  padding: 22px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2000;
+}
+
+.success-modal {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 420px;
+  padding: 28px;
+  text-align: center;
+  width: min(100%, 420px);
+}
+
+.success-modal-icon {
+  align-items: center;
+  background: var(--primary-soft);
+  border-radius: 999px;
+  color: var(--primary);
+  display: flex;
+  height: 58px;
+  justify-content: center;
+  width: 58px;
+}
+
+.success-modal h2 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
 @media (max-width: 1080px) {
   .dashboard-grid,
   .generator-grid {

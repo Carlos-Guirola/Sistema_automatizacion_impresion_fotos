@@ -10,34 +10,17 @@ const steps = [
     text: "Define tamano de papel, distribucion y tipo de impresion.",
   },
   {
-    title: "Genera el PDF",
+    title: "Genera PDF o Word",
     text: "ToolsPrint organiza las fotos y crea un documento listo para imprimir.",
   },
   {
     title: "Descarga e imprime",
-    text: "Usa el PDF generado sin ajustes extra ni trabajo manual repetitivo.",
+    text: "Usa el documento generado sin ajustes extra ni trabajo manual repetitivo.",
   },
-  {
-    title: "Registra pedidos",
-    text: "Mantiene el seguimiento de trabajos, clientes y estados operativos.",
-  },
-  {
-    title: "Controla materiales",
-    text: "Consulta inventario, movimientos y recursos desde la misma plataforma.",
-  },
-];
-
-const managementTools = [
-  "Inventario de materiales",
-  "Entradas y salidas",
-  "Gestion de pedidos",
-  "Control de ventas",
-  "Clientes",
-  "Reportes",
 ];
 
 const benefits = [
-  "PDFs automaticos",
+  "PDF o Word automatico",
   "Impresion tipo Polaroid",
   "Compatibilidad con varios tamanos",
   "Ahorro de tiempo",
@@ -50,10 +33,10 @@ function ComoFunciona() {
     <div className="como-funciona-container">
       <section className="funciona-hero">
         <span className="funciona-badge">Como funciona</span>
-        <h1>De carpeta de fotos a PDF listo en pocos pasos</h1>
+        <h1>De carpeta de fotos a archivo listo en pocos pasos</h1>
         <p>
-          ToolsPrint automatiza la preparacion de fotografias para impresion y
-          suma herramientas basicas para administrar tu flujo de trabajo.
+          ToolsPrint automatiza la preparacion de fotografias para impresion
+          en PDF o Word, sin acomodar cada hoja manualmente.
         </p>
       </section>
 
@@ -65,17 +48,6 @@ function ComoFunciona() {
             <p>{step.text}</p>
           </article>
         ))}
-      </section>
-
-      <section className="modulos-section">
-        <h2>Herramientas de gestion incluidas</h2>
-        <div className="beneficios-grid">
-          {managementTools.map((tool) => (
-            <div className="beneficio" key={tool}>
-              {tool}
-            </div>
-          ))}
-        </div>
       </section>
 
       <section className="beneficios">
