@@ -1,4 +1,4 @@
-# Capturas del Sistema
+# SISTEMA TOOLSPRINT
 
 ## Página Principal
 
@@ -88,7 +88,7 @@ Este proyecto NO incluye migraciones automáticas de base de datos.
 La base de datos debe crearse manualmente ejecutando el script SQL ubicado en:
 
 ```text
-backend/database/base1.sql
+backend/src/database/base1.sql
 ```
 
 Antes de iniciar el sistema es necesario crear la base de datos y ejecutar dicho script desde MySQL Workbench o cualquier cliente MySQL compatible.
